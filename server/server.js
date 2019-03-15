@@ -16,10 +16,12 @@ app.post('/todos', function(req,res){
     todo.save().then(function(doc){
         res.send(doc);
     }, function(err){
-        console.log(err);
+        res.status(400).send(err);
     })
 })
 
 app.listen(3000, function(){
     console.log("Started on port 3000.")
 })
+
+module.exports = {app};
