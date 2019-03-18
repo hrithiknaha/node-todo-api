@@ -95,10 +95,12 @@ app.post('/user', function(req, res) {
     var body = _.pick(req.body, ['email', 'password']);
     var user = new User(body);
 
-    user.save().then(function(user){
-        res.send(user);
+    user.save().then(function(){
+        return user.generateAuthToken();
     }, function(err){
         res.send(err);
+    }).then(function(token){
+        res.header('x-auth', token).send(user)
     })
 })
 
