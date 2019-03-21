@@ -99,7 +99,7 @@ app.post('/user', function(req, res) {
     user.save().then(function(){
         return user.generateAuthToken();
     }, function(err){
-        res.send(err);
+        res.status(400).send(err);
     }).then(function(token){
         res.header('x-auth', token).send(user)
     })
