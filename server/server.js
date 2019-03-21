@@ -122,7 +122,13 @@ app.post('/user/login', function(req,res){
     })
 })
 
-
+app.delete('/user/me/token', authenticate, function(req, res){
+    req.user.removeToken(req.token).then(function(){
+        res.status(200).send();
+    }, function(){
+        res.status(400).send();
+    })
+})
 
 app.listen(port, function(){
     console.log(`Started on port ${port}.`)
