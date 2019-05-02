@@ -9,5 +9,6 @@
 7. ES6 Javascript Used
 
 ENV_VAR is dynamic.
+Make this as default. 
 
 However for authorization [JWT.js](https://jwt.io/) has been used, instead of [Passsport.js](http://www.passportjs.org/).
